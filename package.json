@@ -1,0 +1,28 @@
+{
+  "name": "yunxiu-system-koa",
+  "version": "1.0.0",
+  "description": "云秀系统KOA版本",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "koa": "^2.11.0",
+    "koa-body": "^4.1.1",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "koa2-cors": "^2.0.6",
+    "module-alias": "^2.2.2",
+    "nodemon": "^2.0.2",
+    "require-directory": "^2.1.1"
+  },
+  "_moduleAliases": {
+    "@root": ".",
+    "@config": "./config",
+    "@request": "request",
+    "@utils": "./utils"
+  }
+}
