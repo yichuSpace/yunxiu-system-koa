@@ -21,6 +21,7 @@ class InitManager {
       visit: whenLoadModule
     });
     function whenLoadModule(obj) {
+      // 判断是否router模块
       if (obj instanceof Router) {
         InitManager.app.use(obj.routes())
       }
