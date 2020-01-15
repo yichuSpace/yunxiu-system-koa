@@ -12,7 +12,14 @@ router.get('/list', async (ctx, next) => {
   const query = `
       db.collection('blog').skip(${params.start}).limit(${params.count}).orderBy('createTime', 'desc').get()
   `
-  const { data: { errcode, pager, data, errmsg } } = await callCloudDB(ctx, 'databasequery', query)
+  const {
+    data: {
+      errcode,
+      pager,
+      data,
+      errmsg
+    }
+  } = await callCloudDB(ctx, 'databasequery', query)
   if (errcode === 0) {
     let blogList = []
     if (data.length > 0) {
