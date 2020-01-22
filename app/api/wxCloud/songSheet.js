@@ -8,21 +8,19 @@ const router = new Router({
 
 router.get('/list', async (ctx, next) => {
   const query = ctx.request.query
-  console.log(query)
   const res = await callCloudFn(ctx, 'music', {
     $url: 'getSongSheetList',
-    start: parseInt(query.start),
+    startNum: parseInt(query.start),
     count: parseInt(query.count)
   })
-  console.log(res.data);
-  // let data = []
-  // if (res.resp_data) {
-  //   data = JSON.parse(res.resp_data).data
-  // }
-  // ctx.body = {
-  //   data,
-  //   code: 20000,
-  // }
+  let data = []
+  if (res.data.resp_data) {
+    data = JSON.parse(res.data.resp_data).data
+  }
+  ctx.body = {
+    data,
+    code: 0,
+  }
 })
 
 // 通过ID获取详情
@@ -53,5 +51,15 @@ router.post('/updateSongSheetList', async (ctx, next) => {
     data: res
   }
 })
-
+// 删除歌单
+router.get('/delete', async (ctx, next) => {
+  const params = ctx.request.query
+  console.log(params);
+  const query = `db.collection('songSheetList').doc('${params.id}').remove()`
+  const res = await callCloudDB(ctx, 'databasedelete', query)
+  ctx.body = {
+    code: 0,
+    data: res
+  }
+})
 module.exports = router
