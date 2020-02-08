@@ -29,7 +29,7 @@ router.get('/list', async (ctx, next) => {
     }
 
     ctx.body = {
-      code: 200,
+      code: 0,
       data: blogList,
       total: pager.Total
     }
@@ -60,7 +60,7 @@ router.post('/del', async (ctx, next) => {
   // 删除图片
   const delStorageRes = await cloudStorage.delete(ctx, params.img)
   ctx.body = {
-    code: 200,
+    code: 0,
     data: {
       delBlogRes,
       delCommentRes,

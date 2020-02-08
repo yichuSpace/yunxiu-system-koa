@@ -29,8 +29,10 @@ router.get('/getById', async (ctx, next) => {
   const res = await callCloudDB(ctx, 'databasequery', query)
   console.log(res.data);
   ctx.body = {
-    code: 200,
-    data: JSON.parse(res.data.data)
+    code: 0,
+    data: {
+      detail: JSON.parse(res.data.data)
+    }
   }
 })
 
@@ -45,10 +47,11 @@ router.post('/updateSongSheetList', async (ctx, next) => {
           }
       })
   `
+  console.log(query);
   const res = await callCloudDB(ctx, 'databaseupdate', query)
   ctx.body = {
-    code: 200,
-    data: res
+    code: 0,
+    data: res.data
   }
 })
 // 删除歌单
