@@ -40,6 +40,29 @@ class AxiosMannage {
     );
   }
 
+  /***
+   * post form-data 格式 promise请求包装
+   * 
+   */
+  static async postFormData({ url, data }) {
+    console.log('dfasf测试', data);
+    return await new Promise(
+      (resolve, reject) => {
+        axios({
+          method: 'post',
+          url,
+          data,
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then((response) => {
+          resolve(response);
+        }).catch((err) => {
+          reject(err);
+        });
+      }
+    );
+  }
 
   /***
    * 下载网络资源

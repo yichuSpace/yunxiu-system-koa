@@ -9,6 +9,7 @@ const callCloudDB = async (ctx, fnName, query = {}) => {
     query,
     env: cloudEvn,
   }
+  console.log(data);
   return AxiosMannage.post({ url, data })
 }
 

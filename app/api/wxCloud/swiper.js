@@ -33,12 +33,12 @@ router.get('/list', async (ctx, next) => {
       })
     }
     ctx.body = {
-      code: 200,
+      code: 0,
       data: returnData
     }
   } else {
     ctx.body = {
-      code: 200,
+      code: 0,
       data,
       total
     }
@@ -48,19 +48,18 @@ router.get('/list', async (ctx, next) => {
 
 router.post('/upload', async (ctx, next) => {
   const fileid = await cloudStorage.upload(ctx)
-  console.log(fileid)
-  // 写数据库
-  const query = `
-       db.collection('swiper').add({
-           data: {
-               fileid: '${fileid}'
-           }
-       })
-   `
-  const res = await callCloudDB(ctx, 'databaseadd', query)
+  // // 写数据库
+  // const query = `
+  //      db.collection('swiper').add({
+  //          data: {
+  //              fileid: '${fileid}'
+  //          }
+  //      })
+  //  `
+  // const res = await callCloudDB(ctx, 'databaseadd', query)
   ctx.body = {
     code: 200,
-    id_list: res.id_list
+    // id_list: res.id_list
   }
 })
 

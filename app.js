@@ -15,9 +15,8 @@ app.use(koaBody({
   multipart: true,
 }))
 
-
 app.use(static(path.join(__dirname, './static'))) // 配置静态资源
 
 InitManager.initCore(app) //使用require-directory加载路由文件夹下的所有router
 
-app.listen(3000)
+app.listen(30001)
